@@ -18,6 +18,7 @@ public class BaseWindow extends JFrame {
     public BaseWindow(String title) throws HeadlessException {
         super(title);
 
+        this.setResizable(false);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setAlwaysOnTop(true);
 
@@ -76,13 +77,13 @@ public class BaseWindow extends JFrame {
         JPanel midBottomPanel = new JPanel();
         middlePanel.add(midTopPanel);
         middlePanel.add(midBottomPanel);
-        midTopPanel.setBackground(Color.RED);
         JTextArea agreementText = new JTextArea("By selecting you consent \nto what follows:");
+        agreementText.setBorder(BorderFactory.createSoftBevelBorder(0));
         agreementText.setFocusable(false);
         agreementText.setEditable(false);
         agreementText.setLineWrap(true);
         agreementText.setWrapStyleWord(true);
-        agreementText.setMaximumSize(new Dimension(middlePanel.getPreferredSize().width,32));
+        agreementText.setMaximumSize(new Dimension(middlePanel.getPreferredSize().width,36));
         agreementText.setBackground(new Color(238, 238, 238, 255));
         midTopPanel.add(agreementText);
         midTopPanel.setLayout(new BoxLayout(midTopPanel, BoxLayout.Y_AXIS));
