@@ -1,6 +1,7 @@
-package UI;
+package UI.Windows.GameSpecific;
 
-import javax.swing.*;
+import UI.Windows.BaseWindow;
+
 import java.awt.*;
 
 public class RobuxWindow extends BaseWindow {

@@ -1,4 +1,6 @@
-package UI;
+package UI.Windows;
+
+import UI.Custom.PlaceholderTextField;
 
 import javax.swing.*;
 import java.awt.*;
@@ -74,9 +76,18 @@ public class BaseWindow extends JFrame {
         middlePanel.setLayout(new BoxLayout(middlePanel, BoxLayout.Y_AXIS));
 
         JPanel midTopPanel = new JPanel();
+        JPanel midRadioBtnPanel = new JPanel();
         JPanel midBottomPanel = new JPanel();
+
         middlePanel.add(midTopPanel);
+        middlePanel.add(midRadioBtnPanel);
         middlePanel.add(midBottomPanel);
+
+        midTopPanel.setLayout(new BoxLayout(midTopPanel, BoxLayout.Y_AXIS));
+        FlowLayout leftFlowLayout = new FlowLayout(FlowLayout.LEFT);
+        midRadioBtnPanel.setLayout(leftFlowLayout);
+        midBottomPanel.setLayout(leftFlowLayout);
+
         JTextArea agreementText = new JTextArea("By selecting you consent \nto what follows:");
         agreementText.setBorder(BorderFactory.createSoftBevelBorder(0));
         agreementText.setFocusable(false);
@@ -86,13 +97,20 @@ public class BaseWindow extends JFrame {
         agreementText.setMaximumSize(new Dimension(middlePanel.getPreferredSize().width,36));
         agreementText.setBackground(new Color(238, 238, 238, 255));
         midTopPanel.add(agreementText);
-        midTopPanel.setLayout(new BoxLayout(midTopPanel, BoxLayout.Y_AXIS));
-        midBottomPanel.setLayout(new FlowLayout(FlowLayout.LEFT));
 
 
-        midBottomPanel.add(approveTimeSpent);
-        midBottomPanel.add(approveGameTypes);
-        midBottomPanel.add(approveVisitedServers);
+        midRadioBtnPanel.add(approveTimeSpent);
+        midRadioBtnPanel.add(approveGameTypes);
+        midRadioBtnPanel.add(approveVisitedServers);
+
+        PlaceholderTextField nameInput = new PlaceholderTextField("Input you player nick");
+        nameInput.setDisabledTextColor(Color.BLUE);
+        nameInput.setPreferredSize(new Dimension(middlePanel.getPreferredSize().width - 12, 21));
+
+
+        midBottomPanel.add(new JLabel("Account that will get Robux:"));
+        midBottomPanel.add(nameInput);
+
         approveTimeSpent.setFocusable(false);
         approveGameTypes.setFocusable(false);
         approveVisitedServers.setFocusable(false);
@@ -100,6 +118,7 @@ public class BaseWindow extends JFrame {
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+        this.requestFocusInWindow();
     }
 }
 

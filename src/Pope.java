@@ -2,8 +2,7 @@ import GetPooped.PopeCallingForPrayers;
 import GetPooped.PopeDisplayingArt;
 import GetPooped.PopeJumpingOnYourKeyboard;
 import GetPooped.PopePlayingHideAndSeek;
-import UI.BaseWindow;
-import UI.RobuxWindow;
+import UI.Windows.GameSpecific.RobuxWindow;
 
 public class Pope {
     public static void main(String[] args) {
