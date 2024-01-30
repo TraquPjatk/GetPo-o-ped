@@ -1,0 +1,11 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="GetPo(o)ped:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/GetPo_o_ped_jar</output-path>
+    <root id="archive" name="HideIconsMalware.jar">
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/resources/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="module-output" name="GetPo(o)ped" />
+    </root>
+  </artifact>
+</component>
