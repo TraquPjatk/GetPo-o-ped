@@ -8,16 +8,10 @@ public class BaseWindow extends JFrame {
 
     private static final int WINDOW_WIDTH = 550;
     private static final int WINDOW_HEIGHT = 450;
-    protected JButton proceedButton;
+    protected JButton proceedButton = new JButton("Placeholder");
 
     public BaseWindow(String title) throws HeadlessException {
         super(title);
-
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
 
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         this.setAlwaysOnTop(true);
@@ -46,30 +40,22 @@ public class BaseWindow extends JFrame {
         bottomPanel.add(middlePanel);
         bottomPanel.add(rightPanel);
 
-//        leftPanel.setBackground(Color.RED);
-//        middlePanel.setBackground(Color.GREEN);
-//        rightPanel.setBackground(Color.BLACK);
-
         Dimension contentPanelDimension = new Dimension(WINDOW_WIDTH / 3 - 5, WINDOW_HEIGHT - bannerHeight);
         leftPanel.setPreferredSize(contentPanelDimension);
         middlePanel.setPreferredSize(contentPanelDimension);
         rightPanel.setPreferredSize(contentPanelDimension);
 
         leftPanel.setBorder(BorderFactory.createRaisedSoftBevelBorder());
+        middlePanel.setBorder(BorderFactory.createLoweredBevelBorder());
+        rightPanel.setBorder(BorderFactory.createRaisedSoftBevelBorder());
+
+        proceedButton.setPreferredSize(new Dimension(140, 50));
+        rightPanel.add(proceedButton);
 
 
         this.pack();
         this.setLocationRelativeTo(null);
         this.setVisible(true);
-
-
-//TODO remove enything below while pushing into production ↓
-        try {
-            Thread.sleep(8000);
-        } catch (InterruptedException e) {
-            throw new RuntimeException(e);
-        }
-        System.exit(2137);
     }
 }
 
