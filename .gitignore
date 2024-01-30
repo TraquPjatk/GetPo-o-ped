@@ -1,0 +1,19 @@
+# Ignoruj katalogi wygenerowane przez IDE
+.idea/
+.vscode/
+
+# Ignoruj katalog wygenerowany przez kompilator Java
+out/
+
+# Ignoruj pliki konfiguracyjne
+*.iml
+*.ipr
+*.iws
+*.class
+
+# Ignoruj pliki konfiguracyjne dla systemu operacyjnego
+.DS_Store
+Thumbs.db
+
+# Ignoruj pliki dołączone do projektu przez użytkownika (np. konfiguracje lokalne)
+*.properties
