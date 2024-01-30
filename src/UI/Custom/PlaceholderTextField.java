@@ -9,9 +9,7 @@ public class PlaceholderTextField extends JTextField implements FocusListener {
     private String placeholder;
     private boolean isEmpty = true;
 
-    public PlaceholderTextField(String text) {
-        super(text);
-        this.placeholder = text;
+    public PlaceholderTextField() {
         addFocusListener(this);
         setForeground(Color.GRAY);
         setText(placeholder);

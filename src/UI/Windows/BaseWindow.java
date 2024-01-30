@@ -11,8 +11,9 @@ public class BaseWindow extends JFrame {
     private static final int WINDOW_WIDTH = 550;
     private static final int WINDOW_HEIGHT = 480;
     protected final JTextArea promptMessage = new JTextArea("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.");
-
-    protected JButton proceedButton = new JButton("Placeholder");
+    protected final JLabel inputDescription = new JLabel();
+    protected final PlaceholderTextField inputPlaceholder = new PlaceholderTextField();
+    protected JButton proceedButton = new JButton();
     protected JRadioButton approveTimeSpent = new JRadioButton("Time spent in game");
     protected JRadioButton approveVisitedServers = new JRadioButton("Visited servers");
     protected JRadioButton approveGameTypes = new JRadioButton("Gametypes played");
@@ -98,17 +99,16 @@ public class BaseWindow extends JFrame {
         agreementText.setBackground(new Color(238, 238, 238, 255));
         midTopPanel.add(agreementText);
 
-
         midRadioBtnPanel.add(approveTimeSpent);
         midRadioBtnPanel.add(approveGameTypes);
         midRadioBtnPanel.add(approveVisitedServers);
 
-        PlaceholderTextField nameInput = new PlaceholderTextField("Input you player nick");
+        PlaceholderTextField nameInput = inputPlaceholder;
         nameInput.setDisabledTextColor(Color.BLUE);
         nameInput.setPreferredSize(new Dimension(middlePanel.getPreferredSize().width - 12, 21));
 
 
-        midBottomPanel.add(new JLabel("Account that will get Robux:"));
+        midBottomPanel.add(inputDescription);
         midBottomPanel.add(nameInput);
 
         approveTimeSpent.setFocusable(false);
