@@ -3,6 +3,7 @@ package UI;
 import java.awt.*;
 
 public class CounterStrikeWindow extends BaseWindow{
-    public CounterStrikeWindow() throws HeadlessException {
+    public CounterStrikeWindow(String title) throws HeadlessException {
+        super(title);
     }
 }
