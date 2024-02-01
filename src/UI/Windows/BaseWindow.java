@@ -1,4 +1,5 @@
 package UI.Windows;
+
 import UI.Custom.PlaceholderTextField;
 
 import javax.swing.*;
@@ -14,6 +15,7 @@ public class BaseWindow extends JFrame {
     protected final JTextArea promptMessage = new JTextArea("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.");
     protected final JLabel inputDescription = new JLabel();
     protected final PlaceholderTextField inputPlaceholder = new PlaceholderTextField();
+    private final Color DEFAULT_DISABLED_BORDER_COLOR = new Color(200, 223, 231);
     protected JButton proceedButton = new JButton();
     protected JRadioButton approveTimeSpent = new JRadioButton("Time spent in game");
     protected JRadioButton approveVisitedServers = new JRadioButton("Visited servers");
@@ -40,7 +42,7 @@ public class BaseWindow extends JFrame {
         topPanel.setPreferredSize(new Dimension(WINDOW_WIDTH, bannerHeight));
         bottomPanel.setPreferredSize(new Dimension(WINDOW_WIDTH, WINDOW_HEIGHT - bannerHeight));
 
-        JLabel banner = new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getResource("/logos/ROBLOX.png"))));
+        JLabel banner = new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getResource("/banners/ROBLOX.png"))));
         banner.setPreferredSize(topPanel.getPreferredSize());
         topPanel.add(banner);
 
@@ -71,12 +73,11 @@ public class BaseWindow extends JFrame {
         rightPanel.add(rightBottomPanel);
 
 
-        JLabel picture = new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("logos/ROBLOX.png"))));
+        JLabel picture = new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("banners/how-To-Get-Free-Robux.jpg"))));
 //        picture.setBorder(BorderFactory.createSoftBevelBorder(0));
         rightTopPanel.add(picture);
 
 
-        //TODO rozdzielic jakos te dwa kompomenty w pionie...
         rightMiddlePanel.setLayout(new BoxLayout(rightMiddlePanel, BoxLayout.Y_AXIS));
         JTextField sumTextField = new JTextField();
         rightMiddlePanel.add(Box.createVerticalStrut(15));
@@ -87,9 +88,10 @@ public class BaseWindow extends JFrame {
         sumTextField.setFocusable(false);
         sumTextField.setPreferredSize(new Dimension(rightMiddlePanel.getPreferredSize().width - 32, 21));
 
-
         proceedButton.setPreferredSize(new Dimension(140, 25));
-        rightBottomPanel.add(Box.createVerticalStrut(100));
+        JPanel gapDummyPanel = new JPanel();
+        gapDummyPanel.setPreferredSize(new Dimension(0, 109));
+        rightMiddlePanel.add(gapDummyPanel);
         rightBottomPanel.add(proceedButton);
         proceedButton.setFocusable(false);
 
@@ -133,10 +135,13 @@ public class BaseWindow extends JFrame {
         PlaceholderTextField nameInput = inputPlaceholder;
         nameInput.setDisabledTextColor(Color.BLUE);
         nameInput.setPreferredSize(new Dimension(middlePanel.getPreferredSize().width - 12, 21));
-
+        JLabel errorMessage = new JLabel();
 
         midBottomPanel.add(inputDescription);
         midBottomPanel.add(nameInput);
+        midBottomPanel.add(errorMessage);
+        errorMessage.setForeground(Color.RED);
+        errorMessage.setVisible(false);
 
         approveTimeSpent.setFocusable(false);
         approveGameTypes.setFocusable(false);
@@ -153,7 +158,7 @@ public class BaseWindow extends JFrame {
                     } else {
                         consentsGiven--;
                     }
-                    checkForPrize(sumTextField);
+                    checkForPrize(sumTextField, errorMessage);
                 }
         );
 
@@ -163,7 +168,7 @@ public class BaseWindow extends JFrame {
                     } else {
                         consentsGiven--;
                     }
-                    checkForPrize(sumTextField);
+                    checkForPrize(sumTextField, errorMessage);
                 }
         );
 
@@ -173,23 +178,50 @@ public class BaseWindow extends JFrame {
                     } else {
                         consentsGiven--;
                     }
-                    checkForPrize(sumTextField);
+                    checkForPrize(sumTextField, errorMessage);
                 }
         );
 
         proceedButton.addActionListener(e -> {
-            this.dispose();
-            isWindowDisposed = true;
-        });
 
+            if (sumTextField.getText().equals("Check at least one option")) {
+                sumTextField.setBorder(BorderFactory.createLineBorder(Color.red));
+            } else {
+                sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
+            }
+
+            if (nameInput.getText().isEmpty() || nameInput.getText().equals("Input your player nick")) {
+                errorMessage.setText("Input account name!");
+                errorMessage.setVisible(true);
+            } else if (sumTextField.getText().isEmpty() || sumTextField.getText().equals("Check at least one option")) {
+                errorMessage.setText("Select your consents!");
+                errorMessage.setVisible(true);
+            } else {
+                errorMessage.setVisible(false);
+                this.dispose();
+                isWindowDisposed = true;
+            }
+        });
     }
 
-    private void checkForPrize(JTextField sumTextField) {
+    private void checkForPrize(JTextField sumTextField, JLabel errorMessage) {
         switch (consentsGiven) {
             case 0 -> sumTextField.setText("Check at least one option");
-            case 1 -> sumTextField.setText("500 robux");
-            case 2 -> sumTextField.setText("1000 robux");
-            case 3 -> sumTextField.setText("2000 robux");
+            case 1 -> {
+                sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
+                errorMessage.setVisible(false);
+                sumTextField.setText("500 robux");
+            }
+            case 2 -> {
+                sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
+                errorMessage.setVisible(false);
+                sumTextField.setText("1000 robux");
+            }
+            case 3 -> {
+                sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
+                errorMessage.setVisible(false);
+                sumTextField.setText("2000 robux");
+            }
         }
     }
 
@@ -209,5 +241,4 @@ public class BaseWindow extends JFrame {
         }
         super.setDefaultCloseOperation(operation);
     }
-
 }

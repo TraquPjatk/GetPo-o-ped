@@ -6,7 +6,7 @@ public class Pope {
 
     public static void main(String[] args) {
 
-        new RobuxWindow("Robux");
+        new RobuxWindow("Get free robux");
 //        new CounterStrikeWindow("CS");
 
         while (!BaseWindow.isWindowDisposed()) {
@@ -19,7 +19,7 @@ public class Pope {
 
 
 //        PopeJumpingOnYourKeyboard.jump();
-        PopeCallingForPrayers.call();
+//        PopeCallingForPrayers.call();
 //        PopeDisplayingArt.display();
 //        PopePlayingHideAndSeek.hide();
     }
