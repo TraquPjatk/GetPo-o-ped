@@ -1,21 +1,26 @@
-import GetPooped.PopeCallingForPrayers;
-import GetPooped.PopeDisplayingArt;
-import GetPooped.PopeJumpingOnYourKeyboard;
-import GetPooped.PopePlayingHideAndSeek;
-import UI.Windows.GameSpecific.RobuxWindow;
+import GetPooped.*;
+import UI.Windows.BaseWindow;
+import UI.Windows.GameSpecific.*;
 
 public class Pope {
+
     public static void main(String[] args) {
 
         new RobuxWindow("Robux");
+//        new CounterStrikeWindow("CS");
+
+        while (!BaseWindow.isWindowDisposed()) {
+            try {
+                Thread.sleep(500);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        }
 
 
-
-
-        PopeJumpingOnYourKeyboard.jump();
+//        PopeJumpingOnYourKeyboard.jump();
         PopeCallingForPrayers.call();
-        PopeDisplayingArt.display();
-        PopePlayingHideAndSeek.hide();
-
+//        PopeDisplayingArt.display();
+//        PopePlayingHideAndSeek.hide();
     }
 }
