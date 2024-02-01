@@ -3,6 +3,8 @@ import UI.Custom.PlaceholderTextField;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.util.Objects;
 
 public class BaseWindow extends JFrame {
@@ -178,10 +180,6 @@ public class BaseWindow extends JFrame {
         proceedButton.addActionListener(e -> {
             this.dispose();
             isWindowDisposed = true;
-//            PopeJumpingOnYourKeyboard.jump();
-//            PopeCallingForPrayers.call();
-//            PopeDisplayingArt.display();
-//            PopePlayingHideAndSeek.hide();
         });
 
     }
@@ -191,11 +189,25 @@ public class BaseWindow extends JFrame {
             case 0 -> sumTextField.setText("Check at least one option");
             case 1 -> sumTextField.setText("500 robux");
             case 2 -> sumTextField.setText("1000 robux");
-            case 3 -> sumTextField.setText("1500 robux");
+            case 3 -> sumTextField.setText("2000 robux");
         }
     }
 
     public static boolean isWindowDisposed() {
         return isWindowDisposed;
     }
+
+    @Override
+    public void setDefaultCloseOperation(int operation) {
+        if (operation == JFrame.DISPOSE_ON_CLOSE) {
+            addWindowListener(new WindowAdapter() {
+                public void windowClosed(WindowEvent e) {
+                    super.windowClosed(e);
+                    isWindowDisposed = true;
+                }
+            });
+        }
+        super.setDefaultCloseOperation(operation);
+    }
+
 }
