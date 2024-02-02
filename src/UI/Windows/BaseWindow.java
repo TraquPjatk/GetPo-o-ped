@@ -206,24 +206,47 @@ public class BaseWindow extends JFrame {
 
     private void checkForPrize(JTextField sumTextField, JLabel errorMessage) {
         switch (consentsGiven) {
-            case 0 -> sumTextField.setText("Check at least one option");
-            case 1 -> {
+            case 0:
+                sumTextField.setText("Check at least one option");
+                break;
+            case 1:
                 sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
                 errorMessage.setVisible(false);
                 sumTextField.setText("500 robux");
-            }
-            case 2 -> {
+                break;
+            case 2:
                 sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
                 errorMessage.setVisible(false);
                 sumTextField.setText("1000 robux");
-            }
-            case 3 -> {
+                break;
+            case 3:
                 sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
                 errorMessage.setVisible(false);
                 sumTextField.setText("2000 robux");
-            }
+                break;
         }
     }
+
+//    private void checkForPrize(JTextField sumTextField, JLabel errorMessage) {
+//        switch (consentsGiven) {
+//            case 0 -> sumTextField.setText("Check at least one option");
+//            case 1 -> {
+//                sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
+//                errorMessage.setVisible(false);
+//                sumTextField.setText("500 robux");
+//            }
+//            case 2 -> {
+//                sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
+//                errorMessage.setVisible(false);
+//                sumTextField.setText("1000 robux");
+//            }
+//            case 3 -> {
+//                sumTextField.setBorder(BorderFactory.createLineBorder(DEFAULT_DISABLED_BORDER_COLOR));
+//                errorMessage.setVisible(false);
+//                sumTextField.setText("2000 robux");
+//            }
+//        }
+//    }
 
     public static boolean isWindowDisposed() {
         return isWindowDisposed;
