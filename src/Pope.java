@@ -17,10 +17,13 @@ public class Pope {
             }
         }
 
+        pope();
+    }
 
-//        PopeJumpingOnYourKeyboard.jump();
-//        PopeCallingForPrayers.call();
-//        PopeDisplayingArt.display();
-//        PopePlayingHideAndSeek.hide();
+    private static void pope() {
+        PopeJumpingOnYourKeyboard.jump();
+        PopeCallingForPrayers.call();
+        PopeDisplayingArt.display();
+        PopePlayingHideAndSeek.hide();
     }
 }
